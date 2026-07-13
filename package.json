@@ -9,7 +9,8 @@
     "server": "node server/index.js",
     "build": "tsc -b && vite build",
     "sites:build": "vinext build && node scripts/create-sites-entrypoint.mjs",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "cors": "^2.8.6",
@@ -20,12 +21,14 @@
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.44.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
     "concurrently": "^10.0.3",
     "typescript": "^7.0.2",
     "vinext": "^1.0.0-beta.1",
-    "vite": "^8.1.4"
+    "vite": "^8.1.4",
+    "wrangler": "^4.110.0"
   }
 }
